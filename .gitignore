@@ -5,3 +5,6 @@ araclar/*.onnx
 # Yayin paketi: araclar/paket.py uretir, depoda tutulmaz.
 yayin/
 *.zip
+
+# Acik GitHub deposunun klonu: araclar/github-gonder.py yonetir.
+.github-depo/

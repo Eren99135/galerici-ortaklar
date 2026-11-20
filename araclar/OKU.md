@@ -34,6 +34,14 @@ bir klasör eklenirse `paket.py` içindeki `YOLLAR` listesine **ve**
 `ikon-uret.py` Şahin resmini sarı zemine oturtup `img/ikon/` altına 32/192/512 ve maskable
 ikonları yazar. Çıktılar depoda, betiği yalnızca ikon değişecekse tekrar çalıştır.
 
+```
+python araclar/github-gonder.py "ne degisti"   # acik depoyu gunceller, Pages yenilenir
+```
+
+`github-gonder.py` `.github-depo/` altındaki klonu proje klasörüyle eşitler; `kaynak/`,
+`yayin/`, ONNX dosyaları ve zip'ler dışarıda kalır. `--kuru` ile önce neyin gideceğini
+gösterir.
+
 Yayın adresleri ve itch.io adımları `YAYIN.md` dosyasında.
 
 ## Görsel hazırlama

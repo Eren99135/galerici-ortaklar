@@ -30,9 +30,21 @@ Depo: `Eren99135/galerici-ortaklar`, açık. `main` dalına her push'ta
 kopyalayıp yayınlar. `context/`, `araclar/`, `test.html` ve deneme sayfaları depoda
 görünür ama yayına girmez.
 
-Yerel geliştirme deposu ayrı duruyor ve tüm geçmişi orada. GitHub'a giden depo tek
-commit'lik bir anlık görüntü, `kaynak/` altındaki ham görseller ve ONNX modelleri
-dışarıda.
+Yerel geliştirme deposu ayrı duruyor ve tüm geçmişi orada. GitHub'daki depo bu klasörün
+anlık görüntüsü: `kaynak/` altındaki ham görseller, ONNX modelleri ve commit geçmişi
+dışarıda, commit e-postası `Eren99135@users.noreply.github.com`.
+
+Güncellemeyi tek komut yapar:
+
+```
+python araclar/github-gonder.py "ne degisti"
+python araclar/github-gonder.py --kuru "ne degisti"   # once neyin gideceğini gör
+```
+
+Betik `.github-depo/` altındaki klonu (ilk çalışmada kendisi indirir) proje klasörüyle
+eşitler, commit'ler ve push eder. Push olunca Pages iş akışı kendiliğinden çalışır, adres
+birkaç dakika içinde yeni sürümü gösterir. `.github-depo/` ve `yayin/` yerel depoda
+`.gitignore` içinde.
 
 ## itch.io
 
