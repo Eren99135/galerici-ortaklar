@@ -1,0 +1,7 @@
+# Arka plan kaldirma modelleri: buyuk ikili dosyalar, depoda tutulmaz.
+# Gerektiginde araclar/OKU.md'deki adreslerden indirilir.
+araclar/*.onnx
+
+# Yayin paketi: araclar/paket.py uretir, depoda tutulmaz.
+yayin/
+*.zip

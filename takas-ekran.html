@@ -1,0 +1,50 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Takas denemesi</title><link rel="stylesheet" href="style.css"></head>
+<body><div id="uygulama"></div>
+<script src="js/config.js"></script><script src="js/rng.js"></script><script src="js/yardimci.js"></script>
+<script src="data/modeller.js"></script><script src="data/replikler.js"></script>
+<script src="data/kartlar.js"></script><script src="data/rehber.js"></script>
+<script src="data/hikaye.js"></script><script src="data/sefer.js"></script>
+<script src="data/sinav.js"></script>
+<script src="data/trendler.js"></script>
+<script src="js/araba.js"></script><script src="js/ekspertiz.js"></script><script src="js/karakterler.js"></script>
+<script src="js/pazarlik.js"></script><script src="js/musteri.js"></script><script src="js/olaylar.js"></script>
+<script src="js/sahne.js"></script><script src="js/diyalog.js"></script><script src="js/hikaye.js"></script>
+<script src="js/trend.js"></script>
+<script src="js/sefer.js"></script><script src="js/konsinye.js"></script><script src="js/takas.js"></script>
+<script src="js/cek.js"></script>
+<script src="js/belge.js"></script>
+<script src="js/rehber.js"></script><script src="js/gun.js"></script><script src="js/state.js"></script>
+<script src="js/ses.js"></script>
+<script src="js/ekspertiz-sema.js"></script>
+<script src="js/grafik.js"></script>
+<script src="js/karne.js"></script>
+<script src="js/ui.js"></script>
+<script>
+window.addEventListener("load", function () {
+  var s = G.durum.yeniOyun(606);
+  s.diyalog = null; s.aktifKart = null; s.aktifHikaye = null;
+  s.rehber.acik = false;
+  s.faz = "mesai"; s.aksiyon = 3;
+  var araba = G.araba.ilanUret(s, "ilan", "durust");
+  araba.alisFiyati = Math.round(araba.piyasaDegeri * 0.95);
+  araba.masraflar = G.config.NOTER_PLAKA;
+  araba.ilanFiyati = Math.round(araba.alisFiyati * 1.1);
+  s.stok.push(araba);
+  var m = G.musteri.musteriUret(s, araba);
+  var hedef = (location.hash || "#takas").slice(1);
+  if (hedef === "cek") {
+    m.takasArabasi = null;
+    G.cek.musteriyiCekciYap(s, m);
+    m.cekRiski = "orta";
+  } else {
+    m.takasArabasi = G.takas.arabaUret(s);
+    m.takasKapandi = false;
+  }
+  s.musteriler.push(m);
+  G.pazarlik.satisBaslat(s, m.id, "soyle", "nuri");
+  s.ekran = "satis";
+  G.ui.ciz();
+});
+</script></body></html>

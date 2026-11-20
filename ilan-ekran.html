@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deneme — ilan listesi</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="uygulama"></div>
+
+<script src="js/config.js"></script>
+<script src="js/rng.js"></script>
+<script src="js/yardimci.js"></script>
+<script src="data/modeller.js"></script>
+<script src="data/replikler.js"></script>
+<script src="data/kartlar.js"></script>
+<script src="data/rehber.js"></script>
+<script src="data/hikaye.js"></script>
+<script src="data/sefer.js"></script>
+<script src="data/sinav.js"></script>
+<script src="data/trendler.js"></script>
+<script src="js/araba.js"></script>
+<script src="js/ekspertiz.js"></script>
+<script src="js/karakterler.js"></script>
+<script src="js/pazarlik.js"></script>
+<script src="js/musteri.js"></script>
+<script src="js/olaylar.js"></script>
+<script src="js/sahne.js"></script>
+<script src="js/diyalog.js"></script>
+<script src="js/hikaye.js"></script>
+<script src="js/trend.js"></script>
+<script src="js/sefer.js"></script>
+<script src="js/konsinye.js"></script>
+<script src="js/takas.js"></script>
+<script src="js/cek.js"></script>
+<script src="js/belge.js"></script>
+<script src="js/rehber.js"></script>
+<script src="js/gun.js"></script>
+<script src="js/state.js"></script>
+<script src="js/ses.js"></script>
+<script src="js/ekspertiz-sema.js"></script>
+<script src="js/grafik.js"></script>
+<script src="js/karne.js"></script>
+<script src="js/ui.js"></script>
+<script>
+// Ilan listesi ekranina dogrudan duser: sanayiden.com bandi ve satirlar gorunur.
+window.addEventListener("load", function () {
+  var s = G.durum.yeniOyun(4242);
+  G.olaylar.secenekSec(s, 0);
+  s.ilanlar[1].kaynak = "kro";               // etiketli satir da gorunsun
+  s.ilanlar[2].ilanYasi = 3;
+  s.ekran = "ilanlar";
+  G.ui.ciz();
+
+  // #tasma ile acilirsa: goruntu alanindan tasan ogeleri ekrana yazar (mobil hata ayiklama)
+  if (location.hash === "#tasma") {
+    var en = document.documentElement.clientWidth;
+    var liste = [], hepsi = document.querySelectorAll("*");
+    for (var i = 0; i < hepsi.length; i++) {
+      var k = hepsi[i].getBoundingClientRect();
+      if (k.right > en + 1 || k.width > en + 1) {
+        liste.push(hepsi[i].tagName.toLowerCase() + "." + (hepsi[i].className || "-") +
+          "  sag:" + Math.round(k.right) + " en:" + Math.round(k.width));
+      }
+    }
+    var kutu = document.createElement("pre");
+    kutu.style.cssText = "position:fixed;top:0;left:0;right:0;z-index:999;background:#fff;" +
+      "color:#000;font:11px monospace;margin:0;padding:6px;max-height:60vh;overflow:hidden";
+    var ns = String.fromCharCode(10);
+    kutu.textContent = "goruntu alani: " + en + "px" + ns +
+      (liste.length ? liste.join(ns) : "tasan oge yok");
+    document.body.appendChild(kutu);
+  }
+});
+</script>
+</body>
+</html>

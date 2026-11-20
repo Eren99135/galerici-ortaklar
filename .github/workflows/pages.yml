@@ -1,0 +1,46 @@
+# Oyunu GitHub Pages'e yayinlar.
+#
+# Yalnizca oynanabilir paket yayina cikar: index.html, style.css, js/, data/, img/,
+# manifest.json, sw.js. context/, araclar/, test.html ve deneme sayfalari depoda
+# durur ama yayinlanmaz. Liste araclar/paket.py icindeki YOLLAR ile ayni olmali.
+
+name: Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  yayinla:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.dagit.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Paketi kur
+        run: |
+          mkdir -p _site
+          cp index.html style.css manifest.json sw.js _site/
+          cp -r js data img _site/
+          rm -f _site/js/test.js
+          du -sh _site
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - id: dagit
+        uses: actions/deploy-pages@v4

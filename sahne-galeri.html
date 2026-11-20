@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Galerici Ortaklar — Görsel listesi</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  .liste { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 14px; }
+  .liste .sahne { border-radius: 10px; }
+  .kutucuk { background: rgba(0,0,0,.28); padding: 8px; border-radius: 12px; }
+  .yol { font-family: ui-monospace, Consolas, monospace; font-size: 12px; color: var(--sari); margin: 0 0 6px 2px; }
+  .kisi-izgara { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+  .kisi-kutu { background: rgba(0,0,0,.28); border-radius: 12px; padding: 8px; text-align: center; }
+  .kisi-kutu .cerceve { position: relative; height: 180px; background: #1A1E27; border-radius: 8px; overflow: hidden; }
+  .kisi-kutu .cerceve .karakter { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .kisi-kutu .yol { text-align: left; }
+</style>
+</head>
+<body>
+
+<div id="uygulama">
+  <div class="kapak">
+    <div class="kapak-ic">
+      <div class="etiket">GÖRSEL LİSTESİ</div>
+      <h2>NE LAZIM?</h2>
+      <div class="kucuk">Aşağıdaki dosya adlarıyla görsel atarsan oyunda kendiliğinden yerine oturur.
+        Şu an hepsi yer tutucu. Ayrıntı: <code>img/OKU.md</code></div>
+    </div>
+  </div>
+
+  <div class="bolum-baslik">MEKÂNLAR — <span class="kucuk">yatay 16:9, en az 1600×900, içinde insan olmasın</span></div>
+  <div class="liste" id="mekanlar"></div>
+
+  <div class="bolum-baslik">KARAKTERLER — <span class="kucuk">dikey PNG, şeffaf arka plan, ~900×1200</span></div>
+  <div class="kisi-izgara" id="kisiler"></div>
+
+  <div class="bolum-baslik">İFADELER</div>
+  <div class="kutucuk" id="ifadeler"></div>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/rng.js"></script>
+<script src="js/yardimci.js"></script>
+<script src="data/modeller.js"></script>
+<script src="data/replikler.js"></script>
+<script src="data/kartlar.js"></script>
+<script src="data/rehber.js"></script>
+<script src="data/hikaye.js"></script>
+<script src="data/sefer.js"></script>
+<script src="data/sinav.js"></script>
+<script src="data/trendler.js"></script>
+<script src="js/araba.js"></script>
+<script src="js/ekspertiz.js"></script>
+<script src="js/karakterler.js"></script>
+<script src="js/pazarlik.js"></script>
+<script src="js/musteri.js"></script>
+<script src="js/olaylar.js"></script>
+<script src="js/sahne.js"></script>
+<script src="js/diyalog.js"></script>
+<script src="js/hikaye.js"></script>
+<script src="js/trend.js"></script>
+<script src="js/sefer.js"></script>
+<script src="js/konsinye.js"></script>
+<script src="js/takas.js"></script>
+<script src="js/cek.js"></script>
+<script src="js/belge.js"></script>
+<script>
+(function () {
+  var mekanlar = G.sahne.mekanlar();
+  var h = "";
+  for (var i = 0; i < mekanlar.length; i++) {
+    var m = mekanlar[i];
+    h += '<div class="kutucuk"><div class="yol">img/mekan/' + m + '.jpg</div>' +
+      G.sahne.ciz({ mekan: m, kisiler: [] }) + "</div>";
+  }
+  document.getElementById("mekanlar").innerHTML = h;
+
+  var kisiler = G.sahne.karakterler();
+  var k = "";
+  for (var j = 0; j < kisiler.length; j++) {
+    var kim = kisiler[j];
+    k += '<div class="kisi-kutu"><div class="yol">' + kim + '-normal.png</div>' +
+      '<div class="cerceve">' +
+        G.sahne.ciz({ mekan: "galeri-ici", kisiler: [{ kim: kim, konum: "orta" }], konusan: kim }) +
+      "</div>" +
+      '<div class="kucuk">' + G.sahne.karakterBilgi(kim).ad + "</div></div>";
+  }
+  document.getElementById("kisiler").innerHTML = k;
+
+  var ifadeler = G.sahne.ifadeler();
+  var y = '<div class="kucuk">Her karakter için en az <b>normal</b> olsun. Eksik ifade otomatik olarak normale düşer.</div>';
+  y += '<div class="yol">';
+  for (var t = 0; t < ifadeler.length; t++) {
+    y += "img/karakter/nuri-" + ifadeler[t] + ".png<br>";
+  }
+  y += "</div>";
+  document.getElementById("ifadeler").innerHTML = y;
+})();
+</script>
+
+</body>
+</html>

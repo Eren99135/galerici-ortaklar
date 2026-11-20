@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Galerici Ortaklar — Testler</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  .test-satir { display: flex; gap: 10px; align-items: baseline; padding: 6px 0; border-bottom: 1px solid var(--cizgi); font-size: 14px; }
+  .test-satir .durum { font-family: var(--baslik-font); font-size: 12px; padding: 2px 8px; border-radius: 99px; flex: 0 0 auto; }
+  .gecti .durum { background: var(--yesil); color: #fff; }
+  .kaldi .durum { background: var(--kirmizi); color: #fff; }
+  .test-hata { color: var(--kirmizi); font-size: 13px; }
+</style>
+</head>
+<body>
+
+<div id="uygulama">
+  <div class="kapak">
+    <div class="etiket">TEST</div>
+    <h2 id="ozet">Çalışıyor...</h2>
+  </div>
+  <div class="kutu" id="sonuclar"></div>
+</div>
+
+<!-- ui.js yuklenmez: testler DOM'suz mantigi sinar (tasarim/08) -->
+<script src="js/config.js"></script>
+<script src="js/rng.js"></script>
+<script src="js/yardimci.js"></script>
+<script src="data/modeller.js"></script>
+<script src="data/replikler.js"></script>
+<script src="data/kartlar.js"></script>
+<script src="data/rehber.js"></script>
+<script src="data/hikaye.js"></script>
+<script src="data/sefer.js"></script>
+<script src="data/sinav.js"></script>
+<script src="data/trendler.js"></script>
+<script src="js/araba.js"></script>
+<script src="js/ekspertiz.js"></script>
+<script src="js/karakterler.js"></script>
+<script src="js/pazarlik.js"></script>
+<script src="js/musteri.js"></script>
+<script src="js/olaylar.js"></script>
+<script src="js/sahne.js"></script>
+<script src="js/diyalog.js"></script>
+<script src="js/hikaye.js"></script>
+<script src="js/trend.js"></script>
+<script src="js/sefer.js"></script>
+<script src="js/konsinye.js"></script>
+<script src="js/takas.js"></script>
+<script src="js/cek.js"></script>
+<script src="js/belge.js"></script>
+<script src="js/rehber.js"></script>
+<script src="js/gun.js"></script>
+<script src="js/state.js"></script>
+<script src="js/ses.js"></script>
+<script src="js/ekspertiz-sema.js"></script>
+<script src="js/grafik.js"></script>
+<script src="js/karne.js"></script>
+<script src="js/test.js"></script>
+<script>
+(function () {
+  var sonuclar = G.testKos();
+  var gecen = 0, html = "";
+  for (var i = 0; i < sonuclar.length; i++) {
+    var s = sonuclar[i];
+    if (s.gecti) gecen++;
+    html += '<div class="test-satir ' + (s.gecti ? "gecti" : "kaldi") + '">' +
+      '<span class="durum">' + (s.gecti ? "GEÇTİ" : "KALDI") + "</span>" +
+      "<span><b>" + s.ad + "</b>" +
+      (s.gecti ? "" : '<div class="test-hata">' + s.hata + "</div>") +
+      "</span></div>";
+  }
+  document.getElementById("sonuclar").innerHTML = html;
+  document.getElementById("ozet").textContent = gecen + " / " + sonuclar.length +
+    (gecen === sonuclar.length ? " — HEPSİ YEŞİL" : " — KALAN VAR");
+  if (gecen !== sonuclar.length) {
+    console.error("Kalan testler:", sonuclar.filter(function (s) { return !s.gecti; }));
+  }
+})();
+</script>
+
+</body>
+</html>

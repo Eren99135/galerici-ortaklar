@@ -1,0 +1,18 @@
+{
+  "name": "Galerici Ortaklar",
+  "short_name": "Galerici",
+  "description": "Sanayide ikinci el galeri isletme ve pazarlik oyunu. 30 gun, bir kasa, uc ortak.",
+  "lang": "tr",
+  "dir": "ltr",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "background_color": "#12161F",
+  "theme_color": "#F6C12A",
+  "categories": ["games", "entertainment"],
+  "icons": [
+    { "src": "img/ikon/ikon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "img/ikon/ikon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "img/ikon/ikon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

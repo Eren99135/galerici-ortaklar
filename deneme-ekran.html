@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deneme — pazarlık ekranı</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="uygulama"></div>
+
+<script src="js/config.js"></script>
+<script src="js/rng.js"></script>
+<script src="js/yardimci.js"></script>
+<script src="data/modeller.js"></script>
+<script src="data/replikler.js"></script>
+<script src="data/kartlar.js"></script>
+<script src="data/rehber.js"></script>
+<script src="data/hikaye.js"></script>
+<script src="data/sefer.js"></script>
+<script src="data/sinav.js"></script>
+<script src="data/trendler.js"></script>
+<script src="js/araba.js"></script>
+<script src="js/ekspertiz.js"></script>
+<script src="js/karakterler.js"></script>
+<script src="js/pazarlik.js"></script>
+<script src="js/musteri.js"></script>
+<script src="js/olaylar.js"></script>
+<script src="js/sahne.js"></script>
+<script src="js/diyalog.js"></script>
+<script src="js/hikaye.js"></script>
+<script src="js/trend.js"></script>
+<script src="js/sefer.js"></script>
+<script src="js/konsinye.js"></script>
+<script src="js/takas.js"></script>
+<script src="js/cek.js"></script>
+<script src="js/belge.js"></script>
+<script src="js/rehber.js"></script>
+<script src="js/gun.js"></script>
+<script src="js/state.js"></script>
+<script src="js/ses.js"></script>
+<script src="js/ekspertiz-sema.js"></script>
+<script src="js/grafik.js"></script>
+<script src="js/karne.js"></script>
+<script src="js/ui.js"></script>
+<script>
+window.addEventListener("load", function () {
+  var s = G.durum.yeniOyun(4242);
+  G.olaylar.secenekSec(s, 0);
+  var ilan = s.ilanlar[0];
+  G.ekspertiz.gozKontrol(ilan);
+  G.ekspertiz.ekspertizYap(s, ilan, "normal");
+  G.pazarlik.alisBaslat(s, ilan.id, "nuri");
+  G.pazarlik.alisTeklif(s, Math.round(ilan.istenenFiyat * 0.82 / 10000) * 10000);
+  s.ekran = "pazarlik";
+  G.ui.ciz();
+});
+</script>
+</body>
+</html>
