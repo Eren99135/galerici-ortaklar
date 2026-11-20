@@ -59,9 +59,13 @@ Yükleme adımını Eren yapıyor, hesap gerekiyor.
 6. **Embed options:** genişlik 1100, yükseklik 760, **Mobile friendly** açık (Orientation:
    default), **Fullscreen button** açık, **Automatically start on page load** kapalı.
 7. **Genre:** Simulation · **Tags:** aşağıda.
-8. **Kapak görseli** 630x500 isteniyor. Hazır bir şey yok; `img/mekan/galeri-onu.jpg`
-   üzerine oyunun adı yazılarak çıkarılabilir.
-9. Visibility önce **Draft**, kendi hesabından bir kere oynayıp sonra **Public**.
+8. **Kapak görseli:** `tanitim/itch-kapak-630x500.jpg` (tam ölçüsünde). Geniş afiş isteyen
+   yerler için `tanitim/itch-afis-1200x630.jpg`.
+9. **Ekran görüntüleri:** `tanitim/ekran-dukkan.jpg`, `ekran-ilanlar.jpg`,
+   `ekran-pazarlik.jpg`, `ekran-satis.jpg`. Dördünü de yükle, sıralama bu olsun.
+   Kapak `python araclar/kapak-uret.py` ile üretiliyor; ekran görüntüleri elle alındı,
+   yenisi gerekirse tekrar çekilmesi lazım.
+10. Visibility önce **Draft**, kendi hesabından bir kere oynayıp sonra **Public**.
 
 ### Sayfa metni (olduğu gibi yapıştırılabilir)
 

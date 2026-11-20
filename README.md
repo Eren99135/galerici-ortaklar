@@ -7,6 +7,8 @@ denkleştiremezsen kepengi başkası açar.
 
 **Oyna:** https://eren99135.github.io/galerici-ortaklar/
 
+![Pazarlık ekranı](tanitim/ekran-pazarlik.jpg)
+
 @galericiortak dizisinden esinlenildi. Hayran yapımıdır, resmî bir bağı yoktur.
 
 ## Nasıl yapıldı

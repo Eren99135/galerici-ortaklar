@@ -24,12 +24,15 @@ bunlar yetmez, headless Chrome ile ekran görüntüsü alıp gözle bakmak şart
 ```
 python araclar/paket.py       # yayin/ klasörü + itch.io için zip (8,1 MB)
 python araclar/ikon-uret.py   # PWA ve favicon ikonları (bir kere çalışır)
+python araclar/kapak-uret.py  # itch.io kapağı ve afişi
 ```
 
 `paket.py` yalnızca oynanabilir yolları kopyalar: `index.html`, `style.css`,
 `manifest.json`, `sw.js`, `js/`, `data/`, `img/`. `js/test.js` dışarıda kalır. Oyuna yeni
 bir klasör eklenirse `paket.py` içindeki `YOLLAR` listesine **ve**
 `.github/workflows/pages.yml` içine eklenmeli, yoksa yayında eksik çıkar.
+
+`kapak-uret.py` itch.io kapağını (630x500) ve geniş afişi (1200x630) `tanitim/` altına yazar; arka plan `galeri-onu.jpg`, yazı tipi Arial Black.
 
 `ikon-uret.py` Şahin resmini sarı zemine oturtup `img/ikon/` altına 32/192/512 ve maskable
 ikonları yazar. Çıktılar depoda, betiği yalnızca ikon değişecekse tekrar çalıştır.
